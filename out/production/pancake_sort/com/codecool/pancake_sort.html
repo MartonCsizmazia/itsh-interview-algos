@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    document.write("<b>");
+
+    let numbers = [6, 5, 42, 18, 7, 15, 3, 58];
+    document.write(numbers);
+    document.write("<br>");
+
+    function flip(arr,k){
+        let flipArr = [];
+        let j = k;
+        for(let i = 0; i < arr.length; i++){
+            if(i<k){
+                flipArr[j-1] = arr[i];
+                j--;
+            } else {
+                flipArr[i] = arr[i];
+            }
+        }
+
+        return flipArr;
+    }
+
+    function findMax(arr, k){
+        let max=arr[0];
+        let maxIndex = 0;
+        for(let i = 0; i<k; i++){
+            if(arr[i]> max){
+                max= arr[i];
+                maxIndex = i;
+            }
+        }
+        document.write("<br>");
+        //document.write(maxIndex);
+
+        return maxIndex;
+    }
+
+    function pancakeSort(arr){
+        let top = arr.length;
+        document.write("<br>");
+        document.write(top);
+        for(let i=0; i<arr.length; i++){
+
+            let maximum = findMax(arr, top);
+
+            arr = flip(arr, maximum+1);
+            arr = flip(arr, top);
+            top--;
+        }
+
+        document.write("<br>");
+        document.write(arr);
+
+    }
+
+    flip(numbers, 4)
+    findMax(numbers, 8)
+    pancakeSort(numbers)
+
+
+
+</script>
+</body>
+</html>
